@@ -1,0 +1,30 @@
+{
+  "name": "alremote",
+  "version": "0.0.1",
+  "description": "A client for running and managing your characters remotely on https://adventure.land",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chuxx/ALRemote.git"
+  },
+  "keywords": [
+    "adventure-land",
+    "adventureland",
+    "adventure-land-mmorpg",
+    "javascript",
+    "nodejs",
+    "bot"
+  ],
+  "author": "Marcus Setchell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chuxx/ALRemote/issues"
+  },
+  "homepage": "https://github.com/Chuxx/ALRemote#readme",
+  "devDependencies": {
+    "electron": "^8.0.2"
+  }
+}

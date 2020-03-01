@@ -4,19 +4,7 @@
  * Created Date: 29/02/2020 @ 11:16
  * Author: Marcus Setchell
  * -----
- * Last Modified: 01/03/2020 @ 11:52
- * Modified By: Marcus Setchell
- * -----
- */
-
-
-/**
- * File: \src\screens\login.js
- * Project: alremote
- * Created Date: 29/02/2020 @ 10:51
- * Author: Marcus Setchell
- * -----
- * Last Modified: 29/02/2020 @ 11:16
+ * Last Modified: 01/03/2020 @ 12:03
  * Modified By: Marcus Setchell
  * -----
  */

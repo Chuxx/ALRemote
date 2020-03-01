@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../common.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<aside>
+				<a class="open_dashboard">Dashboard</a>
+				<a class="open_scripts">Scripts</a>
+				<a class="open_settings">Settings</a>
+				<a class="logout">Logout</a>
+			</aside>
+			<main>
+				
+				<!--- <div class="panel" id="js-editor"></div> --->
+
+				<div class="panel padded active" id="dashboard">
+					<h1>Dashboard!</h1>
+					<p>Monitor the activity of your active characters and deploy your inactive characters</p>
+				</div>
+
+				<div class="panel" id="scripts">
+					<div id="js-editor"></div>
+				</div>
+
+				<form class="panel padded centered" id="settings">
+					<h1>Settings!</h1>
+					<p>Change your ALRemote settings</p>
+
+					<label>Scripts Directory</label>
+					<input type="text" class="get_scripts_directory" id="scripts_directory" readonly>
+					<input type="button" class="get_scripts_directory" value="Browse">
+
+					<hr>
+
+					<label class="checkbox">Enable Desktop Notifications
+						<input type="checkbox" name="desktop_notifications">
+						<span class="checkmark"></span>
+					</label>
+
+					<hr>
+
+					<label class="checkbox">Enable Automatic Login
+						<input type="checkbox" name="auto_login">
+						<span class="checkmark"></span>
+					</label>
+
+					<hr>
+
+					<label class="checkbox">Minimize to tray while bots are running
+						<input type="checkbox" name="minimize_to_tray">
+						<span class="checkmark"></span>
+					</label>
+
+					<input type="submit" value="Save">
+				</form>
+
+				<div id="status" class="hidden">
+					<img src="../../img/spinner.gif">
+					<output></output>
+				</div>
+
+			</main>
+		</div>
+		<script>
+
+			const path = require('path');
+			const fs = require('fs');
+			const amdLoader = require('../../../node_modules/monaco-editor/min/vs/loader.js');
+			const amdRequire = amdLoader.require;
+			const amdDefine = amdLoader.require.define;
+			
+			function uriFromPath(_path) {
+				var pathName = path.resolve(_path).replace(/\\/g, '/');
+				console.log(pathName);
+				if (pathName.length > 0 && pathName.charAt(0) !== '/') {
+					pathName = '/' + pathName;
+				}
+				return encodeURI('file://' + pathName);
+			}
+			
+			amdRequire.config({
+				baseUrl: uriFromPath(path.join(__dirname, '../../../node_modules/monaco-editor/min'))
+			});
+			
+			// workaround monaco-css not understanding the environment
+			self.module = undefined;
+			
+			amdRequire(['vs/editor/editor.main'], function() {
+			
+				monaco.languages.typescript.javascriptDefaults.setCompilerOptions({allowNonTsExtensions: true});
+			
+				let editor = monaco.editor.create(document.getElementById('js-editor'), {
+					value: '',
+					language: 'javascript'
+				}, null);
+			
+				window.addEventListener('resize', function(){
+					editor.layout();
+				});
+
+				editor.layout();
+			});
+			
+			
+			</script>
+	</body>
+</html>

@@ -1,0 +1,13 @@
+
+#frm_login
+{
+	width: 600px;
+	position: absolute;
+	z-index: 100;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#frm_login output {text-align: center;}
+#frm_login h1 {text-align: center;}
